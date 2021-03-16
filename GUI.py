@@ -1,21 +1,28 @@
 from tkinter import *
 from tkinter import ttk
+import PIL.ImageTk
 from random import randint
 
 #Global Variables
 window = Tk()
 window.title('Dice Simulator')
+window.geometry("400x400")
 style = ttk.Style()
 style.theme_use('winnative')
 
-#Add Buttons
-Bu1 = ttk.Button(window, text=' ')
-Bu1.grid(row=0, column=0, sticky='snew', ipadx=100, ipady=100)
-Bu1.state(['disabled'])
+#Add Items
+pic1 = "F:\Githup\Dicestimulator\die1.PNG"
+p1 = PIL.Image.open(pic1)
+photo = PhotoImage(file = "F:\Githup\Dicestimulator\die1.PNG")
 
-Bu2 = ttk.Button(window, text='Dice')
-Bu2.grid(row=1, column=0, sticky='snew', ipadx=10, ipady=20)
-Bu2.config(command=lambda: Again())
+label = ttk.Label(window, image=photo)
+label.pack()
+
+button = ttk.Button(window, text='Dice')
+button.grid(row=0, column=0, sticky='snew')
+button.config(command=lambda: Again())
+button.pack()
+
 
 def Again():
     SetLayout()
@@ -23,17 +30,17 @@ def Again():
 def SetLayout():
     ID = randint(1, 6)
     if ID == 1:
-        Bu1.config(text="-----------\n|          |\n|    O    |\n|          |\n-----------")
+        label.config(text="-----------\n|          |\n|    O    |\n|          |\n-----------")
     elif ID == 2:
-        Bu1.config(text="-----------\n|             |\n| O     O |\n|             |\n-----------")
+        label.config(text="-----------\n|             |\n| O     O |\n|             |\n-----------")
     elif ID == 3:
-        Bu1.config(text="-----------\n|    O    |\n|    O    |\n|    O    |\n-----------")
+        label.config(text="-----------\n|    O    |\n|    O    |\n|    O    |\n-----------")
     elif ID == 4:
-        Bu1.config(text="-----------\n| O     O |\n|             |\n| O     O |\n-----------")
+        label.config(text="-----------\n| O     O |\n|             |\n| O     O |\n-----------")
     elif ID == 5:
-        Bu1.config(text="-----------\n| O     O |\n|     O     |\n| O     O |\n-----------")
+        label.config(text="-----------\n| O     O |\n|     O     |\n| O     O |\n-----------")
     elif ID == 6:
-        Bu1.config(text="-----------\n| O     O |\n| O     O |\n| O     O |\n-----------")
+        label.config(text="-----------\n| O     O |\n| O     O |\n| O     O |\n-----------")
 
 
 window.mainloop()
