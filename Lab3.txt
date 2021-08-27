@@ -15,8 +15,8 @@
 14- logout
      su - islam
 15- cd myteam
-16- chmod u=rw,g=rx,o=x oldpasswd
-      chmod 156 oldpasswd
+16- sudo chmod u=rw,g=rx,o=x oldpasswd
+      sudo chmod 156 oldpasswd
       maximum permission for file = 2 read, write
       maximum permission for directory = 3 read, write, execute
       Change default permissions: umask 0777
