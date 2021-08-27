@@ -1,0 +1,11 @@
+1- t & f
+    ex: tar tf myfiles.tar
+2- sudo tar -cvpf backup-etc.tar /etc
+3- sudo ls -id /
+    sudo ls -id /etc
+    sudo ls -id /etc/hosts
+4- sudo cp -a /etc/passwd /home/passwd-copy
+    diff /etc/passwd /home/passwd-copy
+    cmp /etc/passwd /home/passwd-copy
+5- sudo ln -s /etc/passwd /boot
+6- sudo ln /etc/passwd /boot : i could create hard link because it's a file not a directory
