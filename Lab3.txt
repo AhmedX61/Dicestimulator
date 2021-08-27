@@ -1,0 +1,41 @@
+1- sudo useradd -c "Islam Asker" -md /home/islam islam
+    sudo passwd islam
+2- sudo useradd -c Bad User-md /home/baduser baduser
+    sudo passwd baduser
+3- sudo groupadd -g 30000 pgroup
+4- sudo groupadd badgroup
+5- sudo usermod -G pgroup islam
+6- sudo passwd islam
+7- sudo chage -M 30 islam
+8- sudo usermod -L baduser
+9- sudo userdel -r baduser
+10- sudo groupdel badgroup
+13- sudo touch myteam
+      sudo chmod u=-r-w-x,g=-r-w-x,o=r myteam
+14- logout
+     su - islam
+15- cd myteam
+16- chmod u=rw,g=rx,o=x oldpasswd
+      chmod 156 oldpasswd
+      maximum permission for file = 2 read, write
+      maximum permission for directory = 3 read, write, execute
+      Change default permissions: umask 0777
+17- the minimum permission needed for:
+      Copy a directory = 2 read, execute
+      Copy a file = 1 read
+      Delete a file = 2 read, write
+      Change to a directory = 2 write, execute
+      List a directory content (ls command) = 1 read
+      View a file content (more/cat command) = 2 read, write
+      Modify a file content = 2 read, write
+18- touch file
+      chmod 444 file
+      - the file can't be edit because it doesn't have write permission.
+      - it can be deleted after conferm because it's write protected.
+19- Execute permission on files means the right to execute them, if they are programs.
+      For directories, execute permission allows you to enter the directory, and to access any of its files.
+20- sleep 100 &
+21- ^c
+22- ps -u ahmed
+23- ps -U ahmed -u ahmed -N
+24- pgrep -u ahmed
