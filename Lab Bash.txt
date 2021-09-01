@@ -90,3 +90,139 @@ Using awk utility
 	fi
 	
 3- mychmod script:
+	#! /bin/bash
+
+	files=$(find /home/ahmed -type f 2> /dev/null)
+
+	for file in $files
+	do
+	    sudo chmod ugo+x $file
+	    echo "$file now has excution right for all users!"
+	    echo "------------------------------"
+	done
+
+	folders=$(find /home/ahmed -type d 2> /dev/null)
+
+	for folder in $folders
+	do
+	    sudo chmod ugo+x $folder
+	    echo "$folder now has excution right for all users!"
+	    echo "------------------------------"
+	done
+	
+4- mybackup script:
+	#! /bin/bash
+
+	files=$(find /home/ahmed -type f 2> /dev/null)
+
+	for file in $files
+	do
+	    cp $file /home/ahmed/sprints/backup
+	done
+
+5- mymail script:
+	#! /bin/bash
+	
+	for person in 'cat mylist'
+	do
+		mailx $person < letter
+		echo mail to $person was sent
+	done
+	
+6- chkmail script:
+	#! /bin/bash
+
+	use Mail::Box::Mbox;
+
+	my $folder = Mail::Box::Mbox->new( folder => '/var/mail/ahmed' );
+	my $head = Mail::Message::Head->new;
+
+	foreach my $msg ( reverse ($folder->messages()) )
+	{
+		echo "$msg->body()";
+	}
+	
+7- menu script:
+	
+	using select utility
+	#! /bin/bash
+
+	select choice in ls ls-a exit
+	do
+	    case $choice in
+		'ls') 
+		    ls;
+		    echo $r;
+		;;
+		'ls-a')
+		    la -a;
+		    echo $r;
+		;;
+		'exit')
+		    break
+		;;
+		*)
+		    echo "$r is not one of the choices."
+		;;
+	    esac
+	done
+	
+	using while utility
+	#! /bin/bash
+
+	while true
+	do
+	    echo "1) ls"
+	    echo "2) ls-a"
+	    echo "3) exit"
+	    read ans
+	    if [ $ans == "1" ]
+	    then
+		ls
+	    elif [ $ans == "2" ]
+	    then
+		ls -a
+	    elif [ $ans == "3" ]
+	    then
+		exit 0
+	    else
+		echo "Invalid! Try again"
+	    fi
+	done
+	
+8- myarr script:
+	#! /bin/bash
+
+	echo "Enter number of elements: "
+	read length
+	typeset -i i
+	typeset -i j
+	i=0
+	j=0
+
+	while [ $i -lt $length ]
+	do
+	    j=i+1
+	    echo "Please input number $j: "
+	    read a[$i]
+	    i=i+1
+	done
+
+	echo "--------------------"
+	echo "You entered: "
+	echo ${a[*]}
+	
+9- myavg script:
+	#! /bin/bash
+
+	read -a array
+	tot=0
+	avg=0
+	for i in ${array[@]}; do
+	  let tot+=$i
+	done
+	let avg=$tot/${#array[@]}
+	echo "------------------------------"
+	echo "Sum: $tot"
+	echo "length: ${#array[@]}"
+	echo "AVG: $avg"
