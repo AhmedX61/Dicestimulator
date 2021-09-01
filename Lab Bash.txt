@@ -14,4 +14,79 @@ Using awk utility
 6- awk -F: '{sum+=$3} END{print sum}' /etc/passwd
 
 1- mycase script:
+	#! /bin/bash
+
+	echo "Enter a Chatacter:"
+	read char
+	upper=0
+	lower=0
+	number=0
 	
+	case $char in
+	[a-z] ) 
+	lower=1
+	;;
+	[A-Z] ) 
+	upper=1
+	;;
+	[0-9] ) 
+	number=1
+	;;
+	esac
+
+	if [ $lower -eq 1 ] && [ $upper -eq 0 ] && [ $number -eq 0 ]
+	then
+	echo "lower"
+	elif [ $lower -eq 0 ] && [ $upper -eq 1 ] && [ $number -eq 0 ]
+	then
+	echo "UPPER"
+	elif [ $lower -eq 0 ] && [ $upper -eq 0 ] && [ $number -eq 1 ]
+	then
+	echo "Number"
+	elif [ $lower -eq 0 ] && [ $upper -eq 0 ] && [ $number -eq 0 ]
+	then
+	echo "Nothing"
+	fi
+	
+2- Enhanced mycase type of String:
+	#! /bin/bash
+
+	echo "Enter a Chatacter:"
+	read string
+	upper=0
+	lower=0
+	number=0
+
+	for (( i=0; i<${#string}; i++));
+	do
+	case ${string:$i:1} in
+	[a-z] ) 
+	lower=1
+	;;
+	[A-Z] ) 
+	upper=1
+	;;
+	[0-9] ) 
+	number=1
+	;;
+	esac
+	done
+
+	if [ $lower -eq 1 ] && [ $upper -eq 0 ] && [ $number -eq 0 ]
+	then
+	echo "lower"
+	elif [ $lower -eq 0 ] && [ $upper -eq 1 ] && [ $number -eq 0 ]
+	then
+	echo "UPPER"
+	elif [ $lower -eq 0 ] && [ $upper -eq 0 ] && [ $number -eq 1 ]
+	then
+	echo "Number"
+	elif [ $lower -eq 0 ] && [ $upper -eq 0 ] && [ $number -eq 0 ]
+	then
+	echo "Nothing"
+	elif [ $lower -eq 1 ] || [ $upper -eq 1 ] || [ $number -eq 1 ]
+	then
+	echo "Mix"
+	fi
+	
+3- mychmod script:
